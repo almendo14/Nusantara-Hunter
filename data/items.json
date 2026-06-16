@@ -1,0 +1,8 @@
+[
+  {
+    "id": "item_potion_01",
+    "name": "Jamu Pulih Raga",
+    "type": "consumable",
+    "effect": "heal_50"
+  }
+]

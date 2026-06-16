@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1a0a00" />
+  <meta name="description" content="Nusantara Hunter — Roguelike Adventure across the Indonesian Archipelago" />
+
+  <title>Nusantara Hunter</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/menu.css" />
+  <link rel="stylesheet" href="css/game.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
+</head>
+
+<body>
+
+  <div id="screen-menu" class="screen active">
+    <div class="menu-card">
+      <div id="menu-logo">
+        <h1>Nusantara Hunter</h1>
+        <p class="menu-tagline">Jelajahi Kepulauan. Taklukkan Mitos.</p>
+      </div>
+      <nav id="menu-nav">
+        <button class="menu-btn" id="btn-new-game">Mulai Petualangan</button>
+        <button class="menu-btn" id="btn-continue" disabled>Lanjutkan</button>
+        <button class="menu-btn" id="btn-encyclopedia">Ensiklopedia</button>
+        <button class="menu-btn" id="btn-achievements">Pencapaian</button>
+        <button class="menu-btn" id="btn-credits">Kredit</button>
+      </nav>
+    </div>
+    
+    <!-- Credits Modal Overlay -->
+    <div id="credits-modal" class="screen overlay" style="display: none;">
+      <h2>Kredit Pengembang</h2>
+      <div class="credits-content">
+        <p class="credits-role">Pembuat / Developer</p>
+        <p class="credits-name">Almendo Jekson Darwin Naftali Kambu</p>
+        <p class="credits-course">Tugas Mata Kuliah Pengantar Pengembangan Game ITS</p>
+        <p class="credits-email">Hubungi: <code>almendokambu@student.its.ac.id</code></p>
+      </div>
+      <button id="btn-close-credits" class="menu-btn">Kembali</button>
+    </div>
+
+    <p id="menu-version">v0.1.0-alpha</p>
+  </div>
+
+  <!-- SCREEN: Game (Canvas + HUD overlay) -->
+  <div id="screen-game" class="screen" style="display: none;">
+
+    <!-- Primary render surface -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- ── TAMBAHKAN BARIS INI: Wadah untuk Teks Pertarungan ── -->
+    <div id="combat-log">Selamat datang di Nusantara Hunter! Siap berburu...</div>
+
+    <!-- HUD — rendered in DOM over the canvas -->
+    <div id="hud">
+      <div id="hud-hp">❤️ <span id="hud-hp-val">--</span></div>
+      <div id="hud-gold">🪙 <span id="hud-gold-val">0</span></div>
+      <div id="hud-floor">🗺️ <span id="hud-floor-val">--</span></div>
+    </div>
+    
+    <div id="dpad">
+      <button class="dpad-btn" id="dpad-up">▲</button>
+      <div class="dpad-row">
+        <button class="dpad-btn" id="dpad-left">◀</button>
+        <button class="dpad-btn" id="dpad-center">·</button>
+        <button class="dpad-btn" id="dpad-right">▶</button>
+      </div>
+      <button class="dpad-btn" id="dpad-down">▼</button>
+    </div>
+
+    <div id="action-btns">
+      <button class="action-btn" id="btn-attack">⚔️</button>
+      <button class="action-btn" id="btn-skill">✨</button>
+      <button class="action-btn" id="btn-item">🎒</button>
+    </div>
+
+  </div>
+
+  <div id="screen-pause" class="screen overlay" style="display: none;">
+    <h2>Jeda</h2>
+    <button class="menu-btn" id="btn-resume">Lanjutkan</button>
+    <button class="menu-btn" id="btn-save">Simpan</button>
+    <button class="menu-btn" id="btn-main-menu">Menu Utama</button>
+  </div>
+
+  <div id="screen-gameover" class="screen overlay" style="display: none;">
+    <h2>Petualangan Berakhir</h2>
+    <p id="gameover-summary"></p>
+    <button class="menu-btn" id="btn-retry">Coba Lagi</button>
+    <button class="menu-btn" id="btn-back-menu">Menu Utama</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+
+  <script src="js/save.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/spawn.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/enemy.js"></script>
+  <script src="js/loot.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/combat.js"></script>
+  <script src="js/boss.js"></script>
+  <script src="js/achievement.js"></script>
+  
+  <script src="js/game.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "island_dawn_reef",
+    "name": "Dawn Reef",
+    "region": "East Blue",
+    "description": "Sebuah pulau karang yang diselimuti kabut pagi. Sempurna untuk pelaut pemula — tapi jangan lengah.",
+    "floors": { "min": 1, "max": 3 },
+    "difficulty": 1,
+    "monster_pool": ["mob_seagull_bandit", "mob_coral_crab", "mob_reef_shark"],
+    "boss_id": "boss_kraken_spawn",
+    "environment": "coastal",
+    "unlock_condition": null,
+    "rewards": {
+      "clear_berry": 500,
+      "first_clear_item": "item_log_pose_basic"
+    }
+  },
+  {
+    "id": "island_ironwood_forest",
+    "name": "Ironwood Forest",
+    "region": "Grand Line — Entry",
+    "description": "Hutan dengan pohon sekeras baja. Makhluk di sini sudah berevolusi untuk bertahan dalam kondisi ekstrem.",
+    "floors": { "min": 3, "max": 6 },
+    "difficulty": 2,
+    "monster_pool": ["mob_ironback_boar", "mob_vine_serpent", "mob_forest_bandit", "mob_mushroom_golem"],
+    "boss_id": "boss_ironwood_warlord",
+    "environment": "forest",
+    "unlock_condition": { "type": "island_clear", "id": "island_dawn_reef" },
+    "rewards": {
+      "clear_berry": 1500,
+      "first_clear_item": "item_seastone_fragment"
+    }
+  },
+  {
+    "id": "island_volcanic_ridge",
+    "name": "Volcanic Ridge",
+    "region": "Grand Line — Mid",
+    "description": "Ngarai vulkanik yang masih aktif. Suhu udara membakar paru-paru, dan penghuni aslinya lebih panas dari laharnya.",
+    "floors": { "min": 5, "max": 9 },
+    "difficulty": 3,
+    "monster_pool": ["mob_lava_lizard", "mob_ash_golem", "mob_fire_bat", "mob_molten_crab", "mob_pyroclast_drake"],
+    "boss_id": "boss_magma_titan",
+    "environment": "volcanic",
+    "unlock_condition": { "type": "island_clear", "id": "island_ironwood_forest" },
+    "rewards": {
+      "clear_berry": 4000,
+      "first_clear_item": "item_devil_fruit_fragment_fire"
+    }
+  },
+  {
+    "id": "island_sunken_palace",
+    "name": "Sunken Palace",
+    "region": "Grand Line — Deep",
+    "description": "Reruntuhan kerajaan kuno yang tenggelam setengah ke laut. Monster di sini menyimpan rahasia yang harusnya tetap terkubur.",
+    "floors": { "min": 8, "max": 14 },
+    "difficulty": 4,
+    "monster_pool": ["mob_sea_zombie", "mob_coral_knight", "mob_abyssal_eel", "mob_ruin_guardian", "mob_tide_wraith"],
+    "boss_id": "boss_neptune_remnant",
+    "environment": "underwater_ruins",
+    "unlock_condition": { "type": "island_clear", "id": "island_volcanic_ridge" },
+    "rewards": {
+      "clear_berry": 10000,
+      "first_clear_item": "item_ancient_weapon_shard"
+    }
+  },
+  {
+    "id": "island_skyreach_peak",
+    "name": "Skyreach Peak",
+    "region": "New World — Entry",
+    "description": "Puncak yang menusuk awan. Di atas awan rendah, ada ekosistem tersendiri — dan semuanya ingin membunuhmu.",
+    "floors": { "min": 12, "max": 20 },
+    "difficulty": 5,
+    "monster_pool": ["mob_storm_hawk", "mob_cloud_golem", "mob_lightning_fox", "mob_sky_pirate_elite", "mob_tempest_wyrm"],
+    "boss_id": "boss_god_of_storms",
+    "environment": "sky",
+    "unlock_condition": { "type": "island_clear", "id": "island_sunken_palace" },
+    "rewards": {
+      "clear_berry": 30000,
+      "first_clear_item": "item_sky_jade_core"
+    }
+  }
+]

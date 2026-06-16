@@ -1,0 +1,294 @@
+/* css/menu.css */
+
+/* Kontainer Utama Menu */
+#screen-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Pisahkan secara merata: card, version */
+    padding: 30px 20px 20px 20px;
+    background: url('../assets/ui/splash.png') no-repeat center center fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Di atas viewport mobile (desktop/tablet), simulasikan chassis smartphone vertical premium */
+@media (min-width: 480px) {
+    #screen-menu {
+        width: 420px;
+        height: 840px;
+        max-height: 90vh;
+        border: 4px solid #8e6d2b;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(142, 109, 43, 0.25);
+        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-attachment: scroll; /* Scroll fixed background on absolute simulated window */
+    }
+}
+
+/* Efek atmosfer gradien tambahan di latar belakang */
+#screen-menu::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(10,5,5,0.7) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Container kartu menu tengah dengan glassmorphism */
+.menu-card {
+    background: rgba(15, 8, 5, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid var(--color-gold-dim, #b59410);
+    border-radius: 16px;
+    padding: 35px 25px;
+    width: 90%;
+    max-width: 340px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(181, 148, 16, 0.15);
+    z-index: 2;
+    margin: auto; /* Centering vertikal & horisontal di screen */
+}
+
+/* Desain Logo & Tagline (Logo Gaya Nusantara Kuno) */
+#menu-logo {
+    text-align: center;
+    z-index: 2;
+    margin-top: 0;
+    margin-bottom: 20px;
+    animation: fadeInDown 1.2s ease-out;
+}
+
+#menu-logo h1 {
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #ffd700;
+    text-shadow: 3px 3px 0px #4a0a0d, 0 0 20px rgba(255, 215, 0, 0.5);
+    font-family: 'Georgia', serif;
+    margin-bottom: 10px;
+}
+
+.menu-tagline {
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #f0e6df;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    letter-spacing: 1.5px;
+    font-family: 'Georgia', serif;
+}
+
+/* Area Menu Navigasi */
+#menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    margin: 0;
+}
+
+/* Desain Komponen Tombol Menu */
+#menu-nav .menu-btn {
+    width: 100%;
+    max-width: min(280px, 80vw);
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    color: #ffd700;
+    background: linear-gradient(135deg, #321915 0%, #1c0d0b 100%); /* Warna kulit/batu gelap */
+    border: 1px solid #4a2d18; /* Border kayu tipis elegan */
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+    position: relative;
+    transition: all 0.25s ease-in-out;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Efek Hover & Fokus Tombol */
+#menu-nav .menu-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4d241c 0%, #291310 100%);
+    border-color: #ffd700; /* Bersinar emas murni saat di-hover */
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+#menu-nav .menu-btn:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#menu-nav .menu-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    color: #8c7361;
+    border-color: #321915;
+    background: #140a08;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Reposisi Teks Versi di Bagian Bawah Tengah */
+#menu-version {
+    font-size: 0.75rem;
+    color: #8c7361; /* Warna cokelat redup */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+    letter-spacing: 1.5px;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Animasi */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Overlay Screens (Jeda, Game Over, Kredit) */
+.screen.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 5, 5, 0.95);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-sizing: border-box;
+    backdrop-filter: blur(8px);
+}
+
+.screen.overlay h2 {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    color: #ffd700;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    letter-spacing: 2px;
+}
+
+.credits-content {
+    background: linear-gradient(135deg, #321915 0%, #1c0d0b 100%);
+    border: 1px solid #8e6d2b;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.credits-role {
+    font-size: 0.8rem;
+    color: #8c7361;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.credits-name {
+    font-family: 'Georgia', serif;
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.credits-course {
+    font-size: 0.9rem;
+    color: #f0e6df;
+    line-height: 1.45;
+    margin-bottom: 12px;
+}
+
+.credits-email {
+    font-size: 0.8rem;
+    color: #8c7361;
+}
+
+.credits-email code {
+    color: #f0e6df;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* Glassmorphism styling for the credits modal */
+#credits-modal {
+    background: rgba(20, 8, 5, 0.75); /* Dark matching menu theme */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--color-gold-dim, #b59410); /* Dark golden border */
+    border-radius: 12px;
+    max-width: min(340px, 90vw);
+    max-height: 80vh;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(181, 148, 16, 0.25);
+    padding: 24px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#credits-modal h2 {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+#credits-modal .credits-content {
+    background: rgba(50, 25, 21, 0.6);
+    border: 1px solid rgba(181, 148, 16, 0.4);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+

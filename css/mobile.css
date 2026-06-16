@@ -1,0 +1,27 @@
+/* css/mobile.css */
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 2.3rem;
+        letter-spacing: 2px;
+    }
+    .game-subtitle {
+        font-size: 1.6rem;
+        letter-spacing: 5px;
+    }
+
+    .menu-content {
+        max-width: 85%;
+    }
+
+    .btn-menu {
+        padding: 14px 15px;
+        font-size: 1rem;
+        padding-left: 20px;
+    }
+}
+
+/* Memastikan area klik mudah ditekan di mobile dan mencegah zoom otomatis */
+button {
+    touch-action: manipulation;
+}

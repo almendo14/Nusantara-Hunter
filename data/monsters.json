@@ -1,0 +1,299 @@
+[
+  {
+    "id": "mob_seagull_bandit",
+    "name": "Seagull Bandit",
+    "description": "Burung camar yang entah kenapa pakai ikat kepala dan berlagak jadi bajak laut.",
+    "type": "normal",
+    "stats": {
+      "hp": 40,
+      "atk": 8,
+      "def": 3,
+      "spd": 12
+    },
+    "loot_table": [
+      { "item_id": "item_feather", "chance": 0.60 },
+      { "item_id": "item_berry_small", "chance": 0.40 },
+      { "item_id": "item_bandana_torn", "chance": 0.10 }
+    ],
+    "skills": ["skill_peck", "skill_dive_bomb"],
+    "sprite": "assets/sprites/monsters/seagull_bandit.png",
+    "exp_reward": 15,
+    "berry_reward": { "min": 5, "max": 20 }
+  },
+  {
+    "id": "mob_coral_crab",
+    "name": "Coral Crab",
+    "description": "Kepiting yang cangkangnya terbuat dari karang hidup. Susah ditembus, tapi lambat.",
+    "type": "normal",
+    "stats": {
+      "hp": 80,
+      "atk": 12,
+      "def": 15,
+      "spd": 4
+    },
+    "loot_table": [
+      { "item_id": "item_crab_claw", "chance": 0.55 },
+      { "item_id": "item_coral_fragment", "chance": 0.45 },
+      { "item_id": "item_shell_armor_piece", "chance": 0.08 }
+    ],
+    "skills": ["skill_claw_snap", "skill_shell_guard"],
+    "sprite": "assets/sprites/monsters/coral_crab.png",
+    "exp_reward": 22,
+    "berry_reward": { "min": 10, "max": 35 }
+  },
+  {
+    "id": "mob_reef_shark",
+    "name": "Reef Shark",
+    "description": "Hiu karang yang berpatroli di perairan dangkal. Lebih agresif dari yang seharusnya.",
+    "type": "elite",
+    "stats": {
+      "hp": 150,
+      "atk": 28,
+      "def": 8,
+      "spd": 18
+    },
+    "loot_table": [
+      { "item_id": "item_shark_fin", "chance": 0.50 },
+      { "item_id": "item_shark_tooth", "chance": 0.70 },
+      { "item_id": "item_scale_mail_piece", "chance": 0.12 }
+    ],
+    "skills": ["skill_bite", "skill_frenzy_rush", "skill_water_dash"],
+    "sprite": "assets/sprites/monsters/reef_shark.png",
+    "exp_reward": 55,
+    "berry_reward": { "min": 30, "max": 80 }
+  },
+  {
+    "id": "mob_ironback_boar",
+    "name": "Ironback Boar",
+    "description": "Babi hutan dengan punggung berlapis baja alami. Chargenya bisa nembus dinding kayu.",
+    "type": "normal",
+    "stats": {
+      "hp": 120,
+      "atk": 22,
+      "def": 20,
+      "spd": 9
+    },
+    "loot_table": [
+      { "item_id": "item_iron_tusk", "chance": 0.50 },
+      { "item_id": "item_raw_meat", "chance": 0.75 },
+      { "item_id": "item_iron_hide_scrap", "chance": 0.20 }
+    ],
+    "skills": ["skill_charge", "skill_stomp"],
+    "sprite": "assets/sprites/monsters/ironback_boar.png",
+    "exp_reward": 38,
+    "berry_reward": { "min": 20, "max": 60 }
+  },
+  {
+    "id": "mob_vine_serpent",
+    "name": "Vine Serpent",
+    "description": "Ular yang menyamarkan dirinya sebagai sulur tanaman. Racunnya melambatkan gerak.",
+    "type": "normal",
+    "stats": {
+      "hp": 90,
+      "atk": 18,
+      "def": 6,
+      "spd": 20
+    },
+    "loot_table": [
+      { "item_id": "item_venom_sac", "chance": 0.45 },
+      { "item_id": "item_scale_green", "chance": 0.60 },
+      { "item_id": "item_antidote_herb", "chance": 0.15 }
+    ],
+    "skills": ["skill_poison_bite", "skill_constrict", "skill_camouflage"],
+    "sprite": "assets/sprites/monsters/vine_serpent.png",
+    "exp_reward": 42,
+    "berry_reward": { "min": 25, "max": 70 }
+  },
+  {
+    "id": "mob_forest_bandit",
+    "name": "Forest Bandit",
+    "description": "Manusia biasa yang memilih jalan bajak laut darat. Punya taktik, tapi nyali pas-pasan.",
+    "type": "normal",
+    "stats": {
+      "hp": 100,
+      "atk": 20,
+      "def": 12,
+      "spd": 14
+    },
+    "loot_table": [
+      { "item_id": "item_rusty_sword", "chance": 0.30 },
+      { "item_id": "item_berry_medium", "chance": 0.65 },
+      { "item_id": "item_wanted_poster", "chance": 0.05 }
+    ],
+    "skills": ["skill_slash", "skill_throw_rock", "skill_flee"],
+    "sprite": "assets/sprites/monsters/forest_bandit.png",
+    "exp_reward": 35,
+    "berry_reward": { "min": 30, "max": 90 }
+  },
+  {
+    "id": "mob_mushroom_golem",
+    "name": "Mushroom Golem",
+    "description": "Gumpalan jamur raksasa yang bergerak sendiri. Meledak dan melepaskan spora beracun saat mati.",
+    "type": "elite",
+    "stats": {
+      "hp": 280,
+      "atk": 30,
+      "def": 25,
+      "spd": 5
+    },
+    "loot_table": [
+      { "item_id": "item_spore_powder", "chance": 0.80 },
+      { "item_id": "item_mycelium_core", "chance": 0.35 },
+      { "item_id": "item_poison_mushroom_cap", "chance": 0.50 }
+    ],
+    "skills": ["skill_spore_burst", "skill_slam", "skill_death_bloom"],
+    "sprite": "assets/sprites/monsters/mushroom_golem.png",
+    "exp_reward": 90,
+    "berry_reward": { "min": 60, "max": 150 }
+  },
+  {
+    "id": "mob_lava_lizard",
+    "name": "Lava Lizard",
+    "description": "Kadal yang hidup di tepian kawah. Kulit mereka selalu merah membara dan menyisakan jejak panas.",
+    "type": "normal",
+    "stats": {
+      "hp": 160,
+      "atk": 35,
+      "def": 18,
+      "spd": 16
+    },
+    "loot_table": [
+      { "item_id": "item_ember_scale", "chance": 0.65 },
+      { "item_id": "item_magma_shard", "chance": 0.30 },
+      { "item_id": "item_heat_core_small", "chance": 0.10 }
+    ],
+    "skills": ["skill_fire_bite", "skill_tail_sweep", "skill_heat_aura"],
+    "sprite": "assets/sprites/monsters/lava_lizard.png",
+    "exp_reward": 65,
+    "berry_reward": { "min": 50, "max": 120 }
+  },
+  {
+    "id": "mob_ash_golem",
+    "name": "Ash Golem",
+    "description": "Dibentuk dari abu vulkanik yang mengkristal. Tidak merasakan sakit, tidak kenal lelah.",
+    "type": "elite",
+    "stats": {
+      "hp": 400,
+      "atk": 45,
+      "def": 40,
+      "spd": 6
+    },
+    "loot_table": [
+      { "item_id": "item_crystallized_ash", "chance": 0.70 },
+      { "item_id": "item_golem_core", "chance": 0.20 },
+      { "item_id": "item_volcanic_rune", "chance": 0.08 }
+    ],
+    "skills": ["skill_ash_slam", "skill_eruption_step", "skill_petrify_gaze"],
+    "sprite": "assets/sprites/monsters/ash_golem.png",
+    "exp_reward": 130,
+    "berry_reward": { "min": 100, "max": 250 }
+  },
+  {
+    "id": "mob_pyroclast_drake",
+    "name": "Pyroclast Drake",
+    "description": "Naga kecil yang terbang rendah di atas aliran lava. Napasnya bisa melelehkan pelat besi.",
+    "type": "elite",
+    "stats": {
+      "hp": 350,
+      "atk": 60,
+      "def": 28,
+      "spd": 22
+    },
+    "loot_table": [
+      { "item_id": "item_drake_scale", "chance": 0.55 },
+      { "item_id": "item_fire_gland", "chance": 0.40 },
+      { "item_id": "item_drake_fang", "chance": 0.25 },
+      { "item_id": "item_devil_fruit_fragment_fire", "chance": 0.02 }
+    ],
+    "skills": ["skill_flame_breath", "skill_wing_gust", "skill_pyroclast_dive"],
+    "sprite": "assets/sprites/monsters/pyroclast_drake.png",
+    "exp_reward": 180,
+    "berry_reward": { "min": 150, "max": 400 }
+  },
+  {
+    "id": "mob_sea_zombie",
+    "name": "Sea Zombie",
+    "description": "Pelaut yang tenggelam berabad-abad lalu, tapi menolak untuk diam. Masih memakai sisa seragam bajak laut kuno.",
+    "type": "normal",
+    "stats": {
+      "hp": 200,
+      "atk": 40,
+      "def": 22,
+      "spd": 8
+    },
+    "loot_table": [
+      { "item_id": "item_barnacle_armor_piece", "chance": 0.45 },
+      { "item_id": "item_corroded_coin", "chance": 0.60 },
+      { "item_id": "item_ancient_map_piece", "chance": 0.05 }
+    ],
+    "skills": ["skill_rotten_slash", "skill_death_wail", "skill_undead_regen"],
+    "sprite": "assets/sprites/monsters/sea_zombie.png",
+    "exp_reward": 80,
+    "berry_reward": { "min": 70, "max": 180 }
+  },
+  {
+    "id": "mob_ruin_guardian",
+    "name": "Ruin Guardian",
+    "description": "Konstruksi mekanik kuno yang masih aktif menjaga istana yang sudah tidak ada rajanya.",
+    "type": "elite",
+    "stats": {
+      "hp": 600,
+      "atk": 70,
+      "def": 55,
+      "spd": 10
+    },
+    "loot_table": [
+      { "item_id": "item_ancient_gear", "chance": 0.50 },
+      { "item_id": "item_orichalcum_plate", "chance": 0.20 },
+      { "item_id": "item_guardian_core", "chance": 0.12 },
+      { "item_id": "item_ancient_weapon_shard", "chance": 0.03 }
+    ],
+    "skills": ["skill_guardian_slam", "skill_laser_beam", "skill_self_repair", "skill_shock_field"],
+    "sprite": "assets/sprites/monsters/ruin_guardian.png",
+    "exp_reward": 250,
+    "berry_reward": { "min": 200, "max": 500 }
+  },
+  {
+    "id": "mob_storm_hawk",
+    "name": "Storm Hawk",
+    "description": "Elang yang tubuhnya dialiri arus listrik terus-menerus. Sayapannya menghasilkan angin berkecepatan badai.",
+    "type": "normal",
+    "stats": {
+      "hp": 250,
+      "atk": 75,
+      "def": 30,
+      "spd": 35
+    },
+    "loot_table": [
+      { "item_id": "item_thunder_feather", "chance": 0.60 },
+      { "item_id": "item_static_core", "chance": 0.25 },
+      { "item_id": "item_sky_ore_fragment", "chance": 0.15 }
+    ],
+    "skills": ["skill_thunder_talon", "skill_storm_dive", "skill_lightning_shriek"],
+    "sprite": "assets/sprites/monsters/storm_hawk.png",
+    "exp_reward": 110,
+    "berry_reward": { "min": 120, "max": 300 }
+  },
+  {
+    "id": "mob_tempest_wyrm",
+    "name": "Tempest Wyrm",
+    "description": "Naga awan legendaris. Panjangnya ratusan meter dan hidup di dalam awan badai. Kemunculannya menandakan badai besar.",
+    "type": "elite",
+    "stats": {
+      "hp": 900,
+      "atk": 110,
+      "def": 60,
+      "spd": 28
+    },
+    "loot_table": [
+      { "item_id": "item_wyrm_scale_sky", "chance": 0.55 },
+      { "item_id": "item_stormheart_gem", "chance": 0.15 },
+      { "item_id": "item_cloud_steel", "chance": 0.30 },
+      { "item_id": "item_sky_jade_core", "chance": 0.04 }
+    ],
+    "skills": ["skill_tempest_roar", "skill_lightning_storm", "skill_cloud_crush", "skill_sky_dominion"],
+    "sprite": "assets/sprites/monsters/tempest_wyrm.png",
+    "exp_reward": 450,
+    "berry_reward": { "min": 500, "max": 1200 }
+  }
+]
