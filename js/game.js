@@ -91,7 +91,6 @@ function triggerMonsterBattle(enemy) {
           // Clear combat log and write battle start message
           $('#combat-log').html('');
           UIManager.writeLog(`⚔️ Pertempuran dimulai melawan ${enemy.name}!`, "log-system");
-          UIManager.updateBossHealthBar(enemy.name, enemy.currentHp, enemy.stats.hp);
           UIManager.renderBattleUI();
           break;
           
@@ -100,13 +99,6 @@ function triggerMonsterBattle(enemy) {
           UIManager.writeLog(`${GameState.player.name} menyerang ${event.data.targetName} sebesar ${event.data.damage} damage!${pCrit}`, "log-combat");
           if (typeof AudioManager !== 'undefined') {
             AudioManager.playSFX('sfx_attack', 0.6);
-          }
-          if (event.data.targetName && GameController.activeEnemyInBattle) {
-            UIManager.updateBossHealthBar(
-              GameController.activeEnemyInBattle.name,
-              GameController.activeEnemyInBattle.currentHp || 0,
-              GameController.activeEnemyInBattle.stats?.hp || event.data.targetHpLeft + event.data.damage
-            );
           }
           UIManager.renderBattleUI();
           break;
@@ -117,19 +109,11 @@ function triggerMonsterBattle(enemy) {
           if (typeof AudioManager !== 'undefined') {
             AudioManager.playSFX('sfx_hurt', 0.6);
           }
-          if (GameController.activeEnemyInBattle) {
-            UIManager.updateBossHealthBar(
-              GameController.activeEnemyInBattle.name,
-              GameController.activeEnemyInBattle.currentHp || 0,
-              GameController.activeEnemyInBattle.stats?.hp || 0
-            );
-          }
           UIManager.renderBattleUI();
           break;
           
         case BattleSystem.EVENT.ENEMY_DEAD:
           UIManager.writeLog(`${event.data.enemyName} dikalahkan! Memperoleh +${event.data.exp} EXP, +${event.data.berry} Berry, Loot: [${event.data.items.join(", ") || "tidak ada"}]`, "log-victory");
-          UIManager.updateBossHealthBar(event.data.enemyName, 0, GameController.activeEnemyInBattle?.stats?.hp || 0);
           break;
           
         case BattleSystem.EVENT.PLAYER_DEAD:
@@ -138,7 +122,6 @@ function triggerMonsterBattle(enemy) {
           
         case BattleSystem.EVENT.PLAYER_FLEE:
           UIManager.writeLog("Berhasil melarikan diri dari pertarungan!", "log-system");
-          UIManager.resetBattleUI();
           break;
           
         case BattleSystem.EVENT.FLEE_FAIL:
@@ -150,9 +133,6 @@ function triggerMonsterBattle(enemy) {
       GameState.currentBattle = result;
 
       if (result.outcome === 'victory') {
-        if (typeof UIManager !== 'undefined' && typeof UIManager.resetBattleUI === 'function') {
-          UIManager.resetBattleUI();
-        }
         // Update player stats in playerManager.currentPlayer
         if (playerManager.currentPlayer) {
           playerManager.currentPlayer.exp += result.expGained;
@@ -198,21 +178,14 @@ function triggerMonsterBattle(enemy) {
         // Tutup UI Pertarungan, kembalikan phase ke PLAYING, dan render ulang map
         GameState.phase = 'PLAYING';
         startRenderLoop();
-        UIManager.resetBattleUI();
         UIManager.renderBattleUI();
         GameController.renderGameSurface();
         UIManager.updateHUD(GameState.player.currentHp, GameState.player.stats.hp, GameState.player.berry, GameState.currentFloor);
         
       } else if (result.outcome === 'defeat') {
-        if (typeof UIManager !== 'undefined' && typeof UIManager.resetBattleUI === 'function') {
-          UIManager.resetBattleUI();
-        }
         GameController.activeEnemyInBattle = null;
         GameController.triggerGameOver("Gugur dalam pertempuran sengit.");
       } else if (result.outcome === 'fled') {
-        if (typeof UIManager !== 'undefined' && typeof UIManager.resetBattleUI === 'function') {
-          UIManager.resetBattleUI();
-        }
         GameController.activeEnemyInBattle = null;
         GameState.phase = 'PLAYING';
         startRenderLoop();
@@ -243,10 +216,11 @@ function enterFloor(islandId, floor) {
   GameState.currentFloor    = floor;
   GameState.floor           = floor;
 
-  if (typeof UIManager !== 'undefined' && typeof UIManager.resetBattleUI === 'function') {
-    UIManager.resetBattleUI();
-  }
+  const preview = SpawnSystem.previewFloor(islandId, floor);
+  UIManager.writeLog(`Memasuki F${floor} — musuh: ${preview.monsterCount.min}–${preview.monsterCount.max}, elite: ${(preview.eliteChance * 100).toFixed(0)}%`, "log-system");
 
+  // Inisialisasi peta dan musuh di lantai ini
+  mapManager.generateMap();
   enemyManager.spawnRandomEnemies(3);
 
   // Set ulang posisi awal player
@@ -403,9 +377,6 @@ const GameController = {
    * Kembali ke Menu Utama
    */
   goToMenu: function() {
-    if (typeof UIManager !== 'undefined' && typeof UIManager.resetBattleUI === 'function') {
-      UIManager.resetBattleUI();
-    }
     UIManager.hidePause();
     $('#screen-gameover').hide();
     UIManager.showMenu();
@@ -452,9 +423,6 @@ if (typeof playerManager !== 'undefined') {
 // ─── Run Launchers ──────────────────────────────────────────────────────────
 
 function startNewRun() {
-  if (typeof UIManager !== 'undefined' && typeof UIManager.resetBattleUI === 'function') {
-    UIManager.resetBattleUI();
-  }
   initPlayer();
   GameState.phase = 'PLAYING';
   UIManager.showGame();
@@ -486,9 +454,6 @@ function startNewRun() {
 function resumeSavedRun() {
   const loaded = SaveManager.load();
   if (loaded) {
-    if (typeof UIManager !== 'undefined' && typeof UIManager.resetBattleUI === 'function') {
-      UIManager.resetBattleUI();
-    }
     GameState.currentFloor = loaded.floor;
     GameState.player = loaded.player;
     if (typeof playerManager !== 'undefined') {
@@ -714,11 +679,6 @@ async function initGame() {
     
     // 2. Pasang event listener dan input binding
     setupBindings();
-
-    // Reset battle UI state on fresh boot
-    if (typeof UIManager !== 'undefined' && typeof UIManager.resetBattleUI === 'function') {
-      UIManager.resetBattleUI();
-    }
 
     // Play Main Menu BGM immediately on launch
     if (typeof AudioManager !== 'undefined') {
